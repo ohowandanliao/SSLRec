@@ -1127,7 +1127,7 @@ class AdaGCLTrainer(Trainer):
         if optim_config['name'] == 'adam':
             self.optimizer = optim.Adam(model.parameters(), lr=optim_config['lr'], weight_decay=optim_config['weight_decay'])
             self.optimizer_gen_1 = optim.Adam(self.generator_1.parameters(), lr=optim_config['lr'], weight_decay=optim_config['weight_decay'])
-            self.optimizer_gen_2 = optim.Adam(filter(lambda p: p.requires_grad, self.generator_2.parameters()), lr=optim_config['lr'], weight_decay=optim_config['weight_decay'])
+            self.optimizer_gen_2 = optim.Adam(filter(lambda p: p.requires_grad, self.generator_2.parameters()), lr=optim_config['lr'], weight_decay=optim_config['weight_decay'], eps=1e-3)
 
     def generator_generate(self, model):
         edge_index = []

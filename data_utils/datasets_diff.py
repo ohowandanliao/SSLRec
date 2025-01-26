@@ -1,4 +1,5 @@
 import torch.utils.data as data
+from torch import FloatTensor
 
 class DiffusionData(data.Dataset):
     def __init__(self, data):
@@ -6,7 +7,7 @@ class DiffusionData(data.Dataset):
 
     def __getitem__(self, index):
         item = self.data[index]
-        return torch.FloatTensor(item), index
+        return FloatTensor(item), index
     
     def __len__(self):
         return len(self.data)

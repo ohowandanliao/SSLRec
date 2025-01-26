@@ -10,7 +10,8 @@ def get_local_time():
 class Logger(object):
     def __init__(self, log_configs=True):
         model_name = configs['model']['name']
-        log_dir_path = './log/{}'.format(model_name)
+        log_exp =configs.get('log', {}).get('exp', None)
+        log_dir_path = './log/{}'.format(model_name) if log_exp is None else './log/{}/{}'.format(model_name, log_exp)
         if not os.path.exists(log_dir_path):
             os.makedirs(log_dir_path)
         self.logger = logging.getLogger('train_logger')

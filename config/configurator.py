@@ -9,6 +9,8 @@ def parse_configure():
     parser.add_argument('--device', type=str, default='cuda', help='cpu or cuda')
     parser.add_argument('--cuda', type=str, default='0', help='Device number')
     args = parser.parse_args()
+    ## test
+    args.model = 'diffkg'
 
     if args.device == 'cuda':
         os.environ['CUDA_VISIBLE_DEVICES'] = args.cuda
